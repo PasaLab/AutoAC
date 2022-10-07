@@ -234,7 +234,8 @@ def search(args):
     
     gnn_model_manager = ModelManager(data_info, idx_info, args)
     # gnn_model.create_model_class()
-    
+
+    # 调用的是NASPSearcher
     searcher = SEARCHER_NAME[args.searcher_name](data_info, idx_info, train_info, gnn_model_manager, args)
     
     searcher.search()

@@ -233,7 +233,8 @@ class NASPSearcher:
     def search(self):
         self._bst_val_loss = np.inf
         prev_centers = None
-        
+
+        # 格式转换的没什么好说
         self.all_input, self.all_target = convert_np2torch(self.features_list, self.labels, self.args)
         # self._logger.info(f"self.all_input: {self.all_input}\nself.all_target: {self.all_target}")
         

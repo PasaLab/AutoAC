@@ -9,6 +9,7 @@ def preprocess(features_list, adjM, type_mask, labels, train_val_test_idx, dl, a
     if args.feats_type == 0:
         in_dims = [features.shape[1] for features in features_list]
     elif args.feats_type == 6:
+        # valid指的是有属性的
         save = args.valid_attributed_type
         feature_dim = features_list[save].shape[1]
         in_dims = []#[features_list[0].shape[1]] + [10] * (len(features_list) - 1)

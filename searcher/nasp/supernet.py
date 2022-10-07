@@ -105,9 +105,9 @@ class Network_Nasp(nn.Module):
         self.all_nodes_num = self.dl.nodes['total']
         self.all_nodes_type_num = len(self.dl.nodes['count'])
         self.node_type_split_list = [self.dl.nodes['count'][i] for i in range(len(self.dl.nodes['count']))]
-
+        # 无属性节点个数
         self.unAttributed_nodes_num = sum(1 for i in range(self.all_nodes_num) if not(self.dl.nodes['shift'][self.valid_attr_node_type] <= i <= self.dl.nodes['shift_end'][self.valid_attr_node_type]))
-
+        #无属性节点列表
         self.unAttributed_node_id_list = [i for i in range(self.all_nodes_num) if not(self.dl.nodes['shift'][self.valid_attr_node_type] <= i <= self.dl.nodes['shift_end'][self.valid_attr_node_type])]
         self.unAttributed_node_id_list_copy = copy.deepcopy(self.unAttributed_node_id_list)
         
@@ -116,6 +116,7 @@ class Network_Nasp(nn.Module):
 
         self.clusternodeId2originId = {}
         self.originId2clusternodeId = {}
+        # 最开始认为第一个节点是一个类
         for i, origin_id in enumerate(self.unAttributed_node_id_list):
             self.clusternodeId2originId[i] = origin_id
             self.originId2clusternodeId[origin_id] = i
